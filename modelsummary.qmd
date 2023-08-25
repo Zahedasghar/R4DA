@@ -1,0 +1,32 @@
+---
+--- 
+title: Example
+format: html
+---
+  
+ @tbl-mtcars shows that cars with high horse power get low miles per gallon.
+
+```{r}
+#| label: tbl-mtcars
+#| tbl-cap: "Horse Powers vs. Miles per Gallon"
+library(modelsummary)
+mod <- lm(mpg ~ hp, mtcars)
+modelsummary(mod)
+```
+
+
+
+```{r}
+library(gt)
+
+# The ... ellipsis is required!
+custom_theme <- function(x, ...) {
+    x %>% gt::opt_row_striping(row_striping = TRUE)
+}
+options("modelsummary_theme_gt" = custom_theme)
+
+mod <- lm(mpg ~ hp + drat, mtcars)
+modelsummary(mod, output = "gt")
+
+```
+
