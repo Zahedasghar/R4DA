@@ -1,0 +1,78 @@
+---
+title: "Quantitative Methods for Social Sciences and Humanities"
+subtitle: ""
+author: "Zahid Asghar"
+institute: ""
+date: "`r format(Sys.time(), '%d %B %Y')`"
+format:
+  revealjs:
+    css: [custom.scss]
+    docs: true
+    chalkboard: true
+    keep-md: false
+    title-slide-attributes:
+      data-background-image: lahore.jpg
+      data-background-size: contain
+      data-background-opacity: 30%
+execute: 
+  freeze: auto
+
+editor: visual
+---
+
+## Basics of quantitative investigation,Research Design 
+
+-   Simply focussing statistics and techniques:  Miss the forest for the trees 
+
+
+-   Introduction to Data and exploring it with R
+
+
+-   thinking clearly with data is very important ,once thinking is focused, techniques will follow 
+
+
+-   Learning R for making sense of data: real data based case studies
+
+
+-   Education, Election, UN Voting data, Punjab Tax data (Messy vs tidy), WHO, Gapminder, nycflights,bikes,cia_factbook, wvs or if someone from you would like to share it.
+
+## Correlation doesn't imply causation
+
+
+
+> Most politicians facing scandals win reelection
+
+
+
+> Shallow men believe in luck, believe in circumstances. Strong men believe in cause and effect.] Ralph Waldo Emerson, The Conduct of Life
+
+# Learning RStudi/Posit and Quarto
+
+
+## R is not only a statistical language but all documentation under one R
+
+
+### Word/pdf/html, powerpoint/ioslidy/beamer/html slides, CV, research paper, book writing and much more in R, Reproducibility
+
+
+### Exploratory Data Analysis to make sense of data
+
+
+### Basics of data visualization under ggplot2 
+
+
+### R and ggplot2 : NYT, BBC, Google, Amazon, FB ,...
+
+### Statistical modeling : Linear Regression modeling (Simple and Multiple)
+
+
+- - -
+
+![](openintro.jpg)
+
+- - -
+![](the_effect.jpg)
+
+# Quantitative Methods are not something to learn about but to do about
+
+

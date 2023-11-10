@@ -1,0 +1,344 @@
+---
+title: "Quantitative Methods for Social Sciences and Humanities"
+subtitle: ""
+author: "Zahid Asghar"
+institute: ""
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: [xaringan-themer.css, extra.css]
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=4, fig.retina=2, 
+  out.width="100%",
+  message = FALSE
+)
+```
+
+
+```{r xaringanthemer, echo=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#035AA6",
+  secondary_color = "#03A696",
+  colors = c(yellow = "#FFFC31", pink = "#E56399",orange= "#fb5607",
+ blue_violet   = "#8338ec",
+ zomp          = "#38A88E",
+ shadow        = "#87826E",
+ blue          = "#1381B0",
+ yellow_orange = "#FF961C")
+)
+```
+
+```{r qau-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "atomcamp.jpg"
+)
+```
+
+```{r xaringan-banner, echo=FALSE}
+xaringanExtra::use_banner(
+  bottom_left = "Quant Methods for SS",
+  bottom_right = "Prof.Dr. Zahid Asghar",
+  top_left = "",
+  exclude = "title-slide"
+)
+```
+
+
+---
+class: middle bottom hide-logo
+background-image: url(75_yr_pk.png)
+background-position:  50% 50% 
+background-size: cover
+
+---
+class:  left   
+background-image: url(75_yr_pk.png)
+background-position: 100% 0%
+background-size: 30%
+
+### Basics of quantitative investigation,Research Design
+--
+
+### Simply focussing statistics and techniques:  Miss the forest for the trees 
+--
+
+### Introduction to Data and exploring it with R
+--
+
+###  thinking clearly with data is very important ,once thinking is focused, techniques will follow 
+--
+
+### Learning R for making sense of data: real data based case studies
+--
+
+#### UN Voting data, Punjab Tax data (Messy vs tidy), WHO, Gapminder, nycflights,bikes,cia_factbook, wvs or if someone from you would like to shar it.
+
+
+---
+class: middle center title-slide
+background-image: url(atomcamp.jpg)
+background-position: 100% 5%
+background-size: 25%
+
+# Data visualization of UN voting data
+
+---
+class: center middle 
+## Correlation doesn't imply causation
+
+--
+
+> ## .orange[Most politicians facing scandals win reelection]
+
+--
+
+> ### .pink[Shallow men believe in luck, believe in circumstances. Strong men believe in cause and effect.] -.orange[Ralph Waldo Emerson, The Conduct of Life]
+
+--
+
+### Correlation : description, forecasting
+
+--
+
+### Counterfactuals , Causal Inference
+
+---
+class: top left title-slide hide_logo 
+background-image: url(atomcamp.jpg)
+background-position: 100% 5%
+background-size: 25%
+
+## Learning R and R Markdown
+
+### STATA and Excel will also be used as per requirement of the participants
+--
+
+### R is not only a statistical language but all documentation under one R
+--
+
+### Word/pdf/html, powerpoint/ioslidy/beamer/html slides, CV, research paper, book writing and much more in R, Reproducibility
+--
+
+### Exploratory Data Analysis to make sense of data
+--
+
+### Basics of data visualization under ggplot2 
+
+--
+### R and ggplot2 : NYT, BBC, Google, Amazon, FB ,...
+---
+class: top left title-slide hide_logo 
+background-image: url(atomcamp.jpg)
+background-position: 100% 5%
+background-size: 25%
+
+### Exploratory Data Analysis : nycflights, bikes, cia, tax...
+--
+
+### Probability Theory , Lab based on Kobe's golden hand
+
+--
+
+### Probability Distributions, Sampling Distributions, CLT
+
+--
+
+### Random and non-random sampling procedures
+
+--
+
+### p-value, p-hacking, p-screening, publication bias
+
+--
+
+### Statistical modeling : Linear Regression modeling (Simple and Multiple)
+---
+class: middle center 
+background-image: url(openintro.jpg)
+background-position: 50% 100%
+background-size: cover
+---
+
+class: middle center 
+background-image: url(the_effect.jpg)
+background-position: 50% 100%
+background-size: contain
+---
+class: middle center 
+background-image: url(Freedman.jpg)
+background-position: 50% 100%
+background-size: contain
+---
+
+class: middle center 
+background-image: url(r4ds.png)
+background-position: 50% 100%
+background-size: contain
+
+
+---
+class: center middle 
+ # .orange[Quantitative Methods are not something to learn about but to do about]
+
+
+---
+## RCTs and NFIP
+.pull-left[The randomized controlled double-blind experiment
+
+|Size |          Rate     
+------------- | -------------|--------- |
+Treatment     | 200,000 | 28
+Control       | 200,000 | 71
+No consent    | 350,000 | 46]
+.pull-right[ The NFIP study
+
+|Size |          Rate     
+------------- | -------------|--------- |
+Grade 2 (vaccine)   | 225,000 | 25
+Grade 1 and 3 (control)    | 725,000 | 54
+Grade 2 (no consent)    | 125,000 | 44] 
+
+.footnote[ Source: Tohmas Francis, Jr. "An evaluation of the 1954 poliomyelitis vaccine trials- summary report," American Journal of Public Health vol.45 (1945)pp.1-63]
+
+---
+class: middle center 
+```{r, echo=FALSE, warning=FALSE, fig.align='default', fig.width=6, fig.height=6}
+library(DiagrammeR)
+#mermaid("graph LR; -->B; A-->C; C-->E; B-->D; C-->D; D-->F; E-->F(experimental eco)")
+mermaid("graph TD; A(Experiments)-->B(Randomized Controlled); A(Experiments)-->C(Controlled Not randomized);
+B(Randomized Controlled)-->D(Patient Population); D(Patient Population)-->E(Eligible); D(Patient Population)-->F(Ineligible <br> too sick,wrong disease <br> no consent);E(Eligible)-->G(Surgery);E(Eligible)-->H(Control);C(Controlled Not randomized)-->I(Patient Population); I(Patient Population)-->J(Healthier);I(Patient Population)-->K(Sicker);J(Healthier)-->L(Sugergy); K(Sicker)-->M(Control)  
+        ")
+```
+
+---
+
+#### Table 3. Randomized controlled experiments vs. controlled experiments that not randomized: three-year survival rates in studies of the porta-caval shunt. (Percentage are rounded)
+
+ |       Randomized  | Not randomized   
+------------- | -------------|--------- |
+Surgery | 60%| 60%
+Controls     | 60% | 45%
+
+---
+
+#### Table 4. A Study of studies. Four therapies evaluated by RCTs and trials using historical controls. Conclusions of the study are summarized as positive about value of the therapy (+), or negative (-).
+
+
+Therapy |       Randomized controlled | Hisotrically  controlled   
+------------- | -------------|--------- |
+              | |-| +|-
+||||
+Coronary bypass surgery | 1| 7|16|5
+5-FU     | 0| 5|2|0
+BCG      |2|2|4|0
+DES      |0|3|5|0
+
+
+#### Table 5: Randomized controlled experiments vs. studies with historical controls: three-year survival rates for surgery patients and controls in trials of cornonary by surgery. Randomized trials differ from historical controls.
+ |       Randomized  | Historical   
+------------- | -------------|--------- |
+Surgery | 87.6%| 90.9%
+Controls     | 83.2% | 71.1%
+
+---
+class:  inverse-slide
+## Observartional Studies
+
+### Controlled studies not the same as observational
+#### - observationsl studies: its the subjects who assign themselves to different groups: the investigator watch just what happens
+####- Controlled : investigator decides who to be in control group and who to will be in treatment group
+
+### Control has two senses
+#### - a control is a subject who did not get the treatment:
+#### - a controlled experiment is a study where the investigators decides who will be in the treatment group and who will not.
+
+#### Smoking and lungs cancer 
+#### Main issue: was the control group really similar to the treatment group- apart from the exposure of interest?
+### Statisticians talk about controlling for confounding factors in an observational studies. This is a third word of the use control.
+---
+## Examples
+### The Clofibrate trial
+### Pellagara
+### Cervical cancer and cicumcision
+### Ultrasound and low birthweight
+### The Samaritan and suicide
+
+---
+
+class: middle center inverse hide_logo 
+background-image: url(broken_window.png)
+background-position: 100% 100%
+background-size: contain
+
+
+---
+
+```{r, eval=FALSE, echo=FALSE}
+library(renderthis)
+to_pdf(from = "Quant_methods_SS.Rmd")
+
+to_gif(from = "Quant_methods_SS.Rmd")
+```
+
+---
+class: title-slide
+## Why xaringan
+
+.blockquote[
+### `r icons::fontawesome("comment-dots")` Statistical thinking
+- Point 1
+]
+
+.blockquote[
+### `r icons::fontawesome("location-arrow")` Aim
+- Point 1
+]
+```{r}
+icons::fontawesome("rocket") 
+
+icons::fontawesome("spinner")
+```
+
+
+`r icons::fontawesome("bell")`
+
+---
+
+## Data Tables
+
+```{r}
+library("DT"); library("dplyr")
+iris %>% 
+  DT::datatable(class = "compact", rownames = FALSE, extensions = "Buttons",
+                options = list(dom = 'tBp', buttons = c("csv","excel"), 
+                               pageLength = 8)) %>% 
+  DT::formatRound(1:4, digits = 1)
+
+```
+
+
+
+---
+class: title-slide 
+background-image: url(atomcamp.jpg)
+background-position: 100% 0%
+background-size: 25%
+
+
+.pull-right[![](yes.gif)]
+
+
+# ABL : Always Be Learning.
+
+<span role="img" aria-label="Preparing for jobs which not exist yet"></span> 
+
