@@ -1,0 +1,302 @@
+---
+title: "The Taxonomy of Data"
+subtitle: "PERI, Lahore"
+author: "ZAHID ASGHAR"
+format:
+  revealjs:
+    css: [stat20.css, slides.scss]
+    docs: true
+    chalkboard: true
+    keep-md: false
+execute: 
+  freeze: auto
+---
+
+
+```{r}
+library(tidyverse)
+```
+
+
+
+
+# Good Morning!
+
+
+- - -
+
+```{r echo = FALSE, out.width="20%"}
+knitr::include_graphics("assets/images/tidy.png")
+```
+
+# The Taxonomy of Data
+
+## Data Analytics with R
+
+
+> Whenever you’re learning a new tool, for a long time you’re going to suck… But the good news is that is typical, that’s something that happens to everyone, and it’s only temporary.
+
+## Wayforward
+
+1. How to stay in the loop with a focus
+
+-   ask questions
+-   SOPs: Follow the guidelines and practice after it
+-   Send message for your confusions to pollev.com/zahidasghar349
+-   Being uncfortable is comfortable, commit mistakes rather staying away
+
+
+## Agenda
+
+1. The Taxonomy of Data
+2. R/RStudio
+3. pollev.com/zahidasghar349
+4. The Data Frame
+5. Data wrangling
+6. Education, cia, gapminder,penguin and nycbike data exploration
+
+
+
+
+
+- - -
+
+```{r fig.align='center'}
+knitr::include_graphics("assets/images/shoebill-1.png")
+```
+
+
+- - -
+
+```{r fig.align='center'}
+knitr::include_graphics("assets/images/Stat 20 Sketches For Slides-5.jpg")
+```
+
+::: {.center .adage}
+To learn how to critique and construct
+:::
+::: {.center .adage}
+claims made using data.
+:::
+
+
+
+## Data defined {.scrollable}
+
+. . . 
+
+**Data:**
+
+ (n) An item of (chiefly numerical) information, esp. one obtained by scientific work, a number of which are typically collected together for reference, analysis, or calculation. 
+ 
+. . .
+
+ From latin *datum*: that which is given. 
+
+ Facts.
+ 
+. . .
+
+**Variable:** 
+
+ A characteristic of an object / unit that can be measured / recorded.
+
+. . .
+
+**Observations**: the collection of objects / units that are being measured / recorded.
+
+
+# Taxonomy
+
+::: {.columns}
+::: {.column width='50%'}
+
+```{r fig.align='center'}
+knitr::include_graphics("assets/images/plant-taxonomy.jpeg")
+```
+
+:::
+
+::: {.column width='50%'}
+
+Carl Linnaeus, *Systema Naturae*, 1735.
+:::
+::::
+
+## Draw data Taxonomy on Board
+
+
+
+```{r}
+knitr::include_graphics("assets/images/taxonomy-of-data.png")
+```
+
+
+
+
+
+## Types of Variables {.scrollable}
+
+
+**Numerical**: 
+
+. . . 
+
+Variables that take numbers as values that are sensible to add, subtract, etc.
+ 
+. . . 
+
+**Categorical**:
+
+Variables that take categories as values (called *levels*).
+
+. . .
+
+**Continuous**:
+
+A numerical variable that takes values on an interval of the real number line.
+ 
+. . . 
+
+**Discrete**:
+
+A numerical variable that takes values that have jumps between them (i.e. an ordered countable set).
+ 
+. . .
+
+**Ordinal**:
+
+ A categorical variable with levels that have a natural ordering.
+ 
+. . .
+
+**Nominal**:
+
+ A categorical variable with levels with no ordering.
+
+- - - 
+
+::: {.center .adage} 
+
+The **type** of variable informs the way it should be **visualized** and **analyzed**.
+:::
+
+
+# The Data Frame
+
+
+## Observing Penguins
+
+
+```{r out.width = "60%"}
+knitr::include_graphics("assets/images/palmer-station.jpeg")
+```
+
+### Palmer Station, Antarctica
+
+*Size measurements for adult foraging penguins near Palmer Station, Antarctica*, K. Gorman 2020.
+
+
+## Variables: Beak Length, Beak Depth
+
+
+```{r out.width = "60%"}
+knitr::include_graphics("assets/images/culmen_depth.png")
+```
+
+
+. . . 
+
+> These are *continuous* variables.
+
+
+## Variable: Species
+
+
+```{r out.width = "70%"}
+knitr::include_graphics("assets/images/lter_penguins.png")
+```
+
+. . .
+
+> This is a nominal variable.
+
+
+## The Data Frame {.scrollable}
+
+```{r message = FALSE, echo = FALSE}
+library(knitr)
+library(kableExtra)
+library(palmerpenguins)
+penguins %>%
+  select(bill_depth_mm, bill_length_mm, species) %>%
+  sample_n(4) %>%
+  kbl()
+```
+
+A **data frame** is an array that associates the *observations* (downs the rows) with the *variables* measured on each observation (across the columns). Each cell storse a **value** observed for a variable on an observation.
+
+. . .
+
+**Unit of observation**:
+
+ The type of the object on which the variables are observed.
+ 
+
+> Here: an adult foraging *penguin* near Palmer Station, Antarctica
+
+
+## Non-tidy Data Frames
+
+
+From Wikipedia, a *contingency table* of sex and handedness.
+
+```{r}
+knitr::include_graphics("assets/images/non-tidy-contingency-table.png")
+```
+
+. . .
+
+What is the unit of observation? 
+
+. . .
+
+What are the variables?
+
+
+
+## Non-tidy Data Frames
+
+From the World Bank, the number of hospital beds.
+
+```{r}
+knitr::include_graphics("assets/images/non-tidy-world-bank.png")
+```
+
+. . . 
+
+What is the unit of observation? 
+
+. . . 
+
+What are the variables?
+
+
+
+- - -
+
+::: {.columns}
+:::{.column width='30%'}
+1. Read Ch.1 from Openintro 
+
+2.  Download R, Rtools() and RStudio
+
+3. Practice with RStudio.cloud
+
+:::
+:::{.column width='70%'}
+
+
+<iframe src="https://giphy.com/embed/Of40xPqggQrde" width="780" height="550" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+:::
+:::

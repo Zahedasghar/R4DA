@@ -1,0 +1,538 @@
+---
+title: "R for Social Sciences, Public Policy and Humanities"
+subtitle: ""
+author: "Zahid Asghar"
+institute: ""
+date: "`Sarting 4th of July`"
+output:
+  xaringan::moon_reader:
+    css: [xaringan-themer.css, extra.css]
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r , include=FALSE}
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=4, fig.retina=2, 
+  out.width="100%",
+  message = FALSE
+)
+```
+
+
+```{r , echo=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#035AA6",
+  secondary_color = "#03A696",
+  colors = c(yellow = "#FFFC31", pink = "#E56399",orange= "#fb5607",
+ blue_violet   = "#8338ec",
+ zomp          = "#38A88E",
+ shadow        = "#87826E",
+ blue          = "#1381B0",
+ yellow_orange = "#FF961C")
+)
+```
+
+```{r qau-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "atomcamp.jpg"
+)
+```
+
+```{r xaringan-banner, echo=FALSE}
+xaringanExtra::use_banner(
+  bottom_left = "Quant Methods for SS",
+  bottom_right = "Prof.Dr. Zahid Asghar",
+  top_left = "",
+  exclude = "title-slide"
+)
+```
+
+---
+class: left inverse title-slide
+background-image: url(75_yr_pk.png)
+background-position:  50% 0%
+background-size:  10%
+#  Agenda
+## Summarising Data Chapter 2
+## Discussion of various summary statistics
+## How to summarize numerical and categorical data
+## Introduction to R and Lab based demonstration plus HW
+
+
+---
+class: middle center title-slide
+# Why R?
+## Free
+## Flexible
+## future-proof (sort of)
+---
+Class: center middle
+## What can R do for you?
+## R is a popular language & platform for data science & statistical computing. It is:
+
+### open source
+### expanding (increasing capabilities through add-ons)
+### able to open almost any data format
+### able to scrape data from the web
+### a decent tool for data wrangling
+### popular in industry & academia
+### pretty old ("born" 1976...)
+---
+## But R also:
+- is a slightly awkward language for those with programming experience
+has a steep learning curve
+- requires a willingness to write code and use scripts (cf. Tableau & co.)
+is less general than Python (but a bit easier to use for advanced statistical computing)
+---
+
+###  Why R in a Social Science, Humanities and Public Policy setting?
+### R is very versatile; it can be used in a variety of settings (cf. specialized tools for specific purposes)
+### R is open source and free
+
+---
+# How might you use R?
+
+###  Create dataviz for teaching
+### Introduce as a tool for students
+### Your own research
+--
+
+## Case studies
+
+### Analyze economic & demographic data
+### Import data into R
+### Clean & process the data
+### Create visualizations
+
+--
+
+## Analyze social network data
+## Create and import network data
+## Create network visualizations & measures
+
+---
+
+### If you're new to R and/or coding, this may look like overload- But! This is a good starting point for you.
+
+--
+
+### Everything I'm doing you'll be able to reproduce on your own
+
+Things I won't be able to show:
+
+Intro to the R language itself
+We don't have the time, so learn by tweaking my code
+RMarkdown (using R to produce complete documents or slides)
+Text analysis in R
+R offers powerful packages! Links at the end of this workshop
+---
+# R is a calculator
+```{r}
+1 + 1
+```
+# R is an object-based language
+
+```{r}
+students <- 16
+papers <- 3
+papers_to_grade <- students * papers
+papers_to_grade
+```
+---
+
+#Try for yourself!
+How many papers would you have to grade if you were teaching two instead of one section?
+
+```{r}
+students <- 16
+papers <- 3
+classes <- 2
+papers_to_grade <- students * papers * classes
+papers_to_grade
+```
+
+---
+# R can be extended by using one of 12,621 packages
+
+See (https://cran.r-project.org/web/packages/)
+
+# Install packages once, load them each time
+For data input/output:
+```{r}
+library("tidyverse")
+#help(package = "tidyverse")
+```
+
+
+---
+class: center middle title-slide
+#Example 1: Data from the CIA World Factbook (2014), prepared by OpenIntro Statistics
+
+---
+
+
+```{r}
+cia <- read_csv("cia_factbook.csv")
+#glimpse(cia)
+#View(cia)
+```
+
+---
+
+# Life expectancy
+```{r}
+ggplot(data = cia, aes(x = life_exp_at_birth)) + geom_histogram()
+```
+
+---
+#Try for yourself!
+How is the net migration rate distributed?
+
+```{r, warning=FALSE}
+ggplot(data = cia, aes(x = net_migration_rate)) + geom_histogram()
+```
+
+---
+#Life expectancy -> more emigration?
+
+```{r,warning=FALSE}
+ggplot(data = cia, aes(x = life_exp_at_birth, y = net_migration_rate)) + 
+  geom_point() + 
+  geom_text(aes(label = country))
+```
+
+
+---
+#Let's un-clutter this:
+```{r,warning=FALSE}
+filter(cia, net_migration_rate > 20 | net_migration_rate < -20)
+```
+
+---
+#Let's un-clutter this:
+
+```{r,warning=FALSE}
+ggplot(data = cia, aes(x = life_exp_at_birth, y = net_migration_rate)) + 
+  geom_point() + 
+  geom_text(data = filter(cia, net_migration_rate > 20 | net_migration_rate < -20), aes(label = country), vjust = "inward", hjust = "inward")
+```
+
+---
+## Are the two variables related?
+
+```{r echo=FALSE,warning=FALSE,fig.height=2.5, fig.width=5}
+ggplot(data = cia, aes(x = life_exp_at_birth, y = net_migration_rate)) + 
+  geom_point() + 
+  geom_text(data = filter(cia, net_migration_rate > 20 | net_migration_rate < -20), aes(label = country), vjust = "inward", hjust = "inward") + 
+  geom_smooth()
+```
+
+---
+## How does internet access vary around the world?
+I could use internet_users, but the raw number is bad for comparison. So let's divide by population:
+```{r ,warning=FALSE}
+cia <- mutate(cia, 
+              internet_users_perc = internet_users / population * 100)
+```
+---
+## How does internet access vary around the world?
+
+
+```{r}
+ggplot(data = cia, aes(x = internet_users_perc)) + geom_histogram()
+
+```
+
+
+
+---
+
+## Higher life expectancy -> more internet access?
+
+```{r}
+ggplot(data = cia, aes(x = life_exp_at_birth, y = internet_users_perc)) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+---
+
+##Let's improve this plot!
+
+```{r echo=FALSE}
+ggplot(data = cia, aes(x = life_exp_at_birth, y = internet_users_perc)) + 
+  geom_point() + 
+  geom_smooth() + 
+  geom_text(data = filter(cia, internet_users_perc > 90 | life_exp_at_birth > 85), aes(label = country), vjust = "inward", hjust = "inward") + 
+  xlab("Life expectancy at birth") + 
+  ylab("% of population with internet access") + 
+  labs(title = "Countries with higher life expectancy have more internet access",
+       subtitle = "... but this trend applies only to countries with life expectancy of 70 years or higher",
+       caption = "Source: CIA World Factbook")
+```
+
+---
+# Try for yourself!
+### How would you plot internet access against population growth (population_growth_rate)?
+
+```{r echo=FALSE,warning=FALSE}
+ggplot(data = cia, aes(x = population_growth_rate, y = internet_users_perc)) + 
+  geom_point() + 
+  geom_smooth() + 
+  xlab("Population growth rate (in percentage points)") + 
+  ylab("% of population with internet access")
+```
+---
+# Identify the outliers
+
+```{r}
+filter(cia, population_growth_rate < -5 | population_growth_rate > 5)
+```
+
+---
+# Let's try again, w/o outliers
+
+```{r echo=FALSE,warning=FALSE}
+cia_without_outliers <- filter(cia, population_growth_rate > -5 & population_growth_rate < 5)
+ggplot(data = cia_without_outliers, aes(x = population_growth_rate, y = internet_users_perc)) + 
+  geom_point() + 
+  geom_smooth() + 
+  xlab("Population growth rate (in percentage points)") + 
+  ylab("% of population with internet access")
+```
+
+---
+## Visualize data on a map
+First, use the built-in map tools in ggplot2:
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+worldmap <- map_data("world")
+glimpse(worldmap)
+```
+
+---
+## Clean some country names
+
+```{r}
+cia <- mutate(cia,
+              country = ifelse(country == "United States", "USA", country))
+cia <- mutate(cia,
+              country = ifelse(country == "United Kingdom", "UK", country))
+```
+
+---
+##Join CIA and map data
+```{r}
+iumap <- left_join(x = worldmap, 
+                   y = cia,
+                   by = c("region" = "country"))
+glimpse(iumap)
+```
+
+
+---
+##First take: a chloropleth map
+
+```{r echo=FALSE,warning=FALSE}
+ggplot(data = iumap, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = internet_users_perc)) + 
+  labs(title = "Internet usage around the world", subtitle = "% of population with internet access", caption = "Source: CIA World Factbook")
+
+```
+
+---
+## Some improvements
+Map projection
+Labels
+Remove Antarctica
+Legend placement
+```{r}
+worldmap_noant <- filter(worldmap, 
+                         region != "Antarctica")
+iumap <- left_join(x = worldmap_noant, 
+                   y = cia,
+                   by = c("region" = "country"))
+```
+
+---
+## Some improvements
+Map projection
+Labels
+Remove Antarctica
+Legend placement
+
+```{r}
+ggplot(data = iumap, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = life_exp_at_birth)) + 
+  labs(title = "Internet usage around the world", 
+       subtitle = "% of population with internet access", 
+       caption = "Source: CIA World Factbook",
+       fill = "% of population with internet access") + 
+  coord_map(projection = "rectangular", lat0 = 0, xlim = c(-180, 180)) +
+  theme(legend.position = "bottom")
+```
+
+
+---
+## Try for yourself:
+Map migration rates around the world!
+
+```{r echo=FALSE}
+iumap <- mutate(iumap,
+                net_migration_rate_scaled = plogis(net_migration_rate) - 0.5)
+ggplot(data = iumap, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = net_migration_rate_scaled)) + 
+  labs(title = "Migration around the world", 
+       subtitle = "Map shows emigration in red and immigration in blue", 
+       caption = "Source: CIA World Factbook",
+       fill = "Net migration (logistic transformation)") + 
+  coord_map(projection = "rectangular", lat0 = 0, xlim = c(-180, 180)) +
+  theme(legend.position = "bottom") +
+  scale_fill_gradient2(low = "red", mid = "white",
+  high = "blue", midpoint = 0)
+```
+
+
+---
+## Adding locations is also easy. Let's pick capitals...
+First, I scrape location data from the web (using the "rvest" package): Google points me to http://techslides.com/list-of-countries-and-capitals...
+
+
+```{r}
+library("rvest")
+cap_url <- read_html("http://techslides.com/list-of-countries-and-capitals")
+cap_nodes <- html_nodes(cap_url, "table")
+cap_table <- html_table(cap_nodes[1], fill = TRUE, header = TRUE)[[1]]
+glimpse(cap_table)
+```
+
+---
+## Fixing a few country names and removing mini-states
+
+```{r}
+cap_table <- mutate(cap_table,
+                    `Country Name` = ifelse(`Country Name` == "United States", "USA", `Country Name`))
+cap_table <- mutate(cap_table,
+                    `Country Name` = ifelse(`Country Name` == "United Kingdom", "UK", `Country Name`))
+cia_with_caps <- left_join(x = cia, 
+                   y = cap_table,
+                   by = c("country" = "Country Name"))
+cia_with_caps <- mutate(cia_with_caps,
+                        no_ministates = ifelse(population >= 1000000, 
+                                               1, 
+                                               0))
+
+```
+
+---
+
+## Internet access, with capitals
+
+```{r}
+ggplot(data = iumap, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = internet_users_perc)) + 
+  geom_point(data = filter(cia_with_caps, no_ministates == 1), 
+             aes(x = `Capital Longitude`, y = `Capital Latitude`, group = NULL), 
+             color = "orange", size = 1) + 
+  labs(title = "Internet usage around the world", 
+       subtitle = "% of population with internet access", 
+       caption = "Source: CIA World Factbook",
+       fill = "% of population with internet access") + 
+  coord_map(projection = "rectangular", lat0 = 0, xlim = c(-180, 180)) +
+  theme(legend.position = "bottom")
+```
+
+
+---
+## Instead of building your own...
+you can use some built-in mapping tools, too!
+
+Let's look at some economic data for the tri-state area, using the "blscrapeR" package to pull data from the API of the U.S. Bureau of Labor Statistics.
+
+```{r echo=FALSE,eval=FALSE}
+#devtools::install_github("keberwein/blscrapeR")
+library("blscrapeR")
+ue_tristate <- get_bls_county(stateName = c("Pennsylvania", "New Jersey", "Delaware"))
+glimpse(ue_tristate)
+```
+
+---
+
+# Example 2 : #oscarssowhite
+What do we know about diversity among Academy Award winners over time?
+
+I use data provided by Crowdflower/FigureEight: https://data.world/crowdflower/academy-awards-demographics
+```{r}
+##aa <- import("Data/crowdflower-academy-awards-demographics/data/oscars_demographics_dfe.csv")
+aa<-read_csv("Oscars-demographics-DFE.csv")
+glimpse(aa)
+```
+
+---
+## Which awards are in the dataset?
+
+```{r}
+table(aa$award)
+```
+
+---
+## AA winners overall
+
+```{r}
+ggplot(data = aa, aes(x = race_ethnicity)) + geom_bar()
+```
+
+---
+## AA winners over time
+First, collapse the data:
+
+```{r}
+aa_year <- summarize(group_by(aa, year_of_award, race_ethnicity),
+                     awards = n())
+
+
+```
+
+
+---
+## AA winners over time
+Then, create the plot:
+```{r}
+ggplot(data = aa_year, 
+       aes(x = year_of_award, y = awards, color = race_ethnicity)) + 
+  geom_point() + 
+  ylim(0, NA)
+```
+
+---
+## More recent trends since 1960
+
+```{r}
+
+ggplot(data = filter(aa_year, year_of_award >= 1960), aes(x = year_of_award, y = awards, fill = race_ethnicity)) + 
+  geom_col() + 
+  ylim(0, NA) 
+
+#scale_fill_viridis(discrete = TRUE)
+```
+
+---
+
+```{r, echo=FALSE, eval=FALSE}
+#remotes::install_github("jhelvy/renderthis")
+library(renderthis)
+to_pdf(from = "R4SS.Rmd")
+
+to_gif(from = "R4SS.Rmd")
+```
+
+
+

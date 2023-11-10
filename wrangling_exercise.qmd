@@ -190,7 +190,7 @@ Let's look at fivethirtyeight's article [" The Economic Guide To Picking A Colle
 The description in the `readme` file for the data is as follows:
 
 | Header                 | Description                                                                |
-|------------------|------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------|
 | `Rank`                 | Rank by median earnings                                                    |
 | `Major_code`           | Major code, FO1DP in ACS PUMS                                              |
 | `Major`                | Major description                                                          |

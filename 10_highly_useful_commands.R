@@ -99,7 +99,7 @@ starwars |> select(gender, mass) |>
   mutate(cat = "top3") |>
   as.data.frame()
 
-## favorite 10 
+-## favorite 10 
 # Reflow your dplyr code
 
 # ctrl+shift+A 
