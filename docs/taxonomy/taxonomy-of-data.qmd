@@ -1,15 +1,22 @@
 ---
-title: "The Taxonomy of Data"
-subtitle: "PERI, Lahore"
-author: "ZAHID ASGHAR"
+title: "[The Taxonomy of Data]{.flow}"
+subtitle: "[PERI, Lahore]{style=color:red;}"
+author: "[ZAHID ASGHAR, School of Economics, QAU]{.adage}"
 format:
   revealjs:
-    css: [stat20.css, slides.scss]
+    logo: "unicef.jpg"
+    css: [stat20.css, slides.scss, styles.scss]
     docs: true
     chalkboard: true
     keep-md: false
+    title-slide-attributes:
+      data-background-image: lahore.jpg
+      data-background-size: contain
+      data-background-opacity: 30%
 execute: 
   freeze: auto
+
+editor: visual
 ---
 
 
@@ -23,7 +30,6 @@ library(tidyverse)
 # Good Morning!
 
 
-- - -
 
 ```{r echo = FALSE, out.width="20%"}
 knitr::include_graphics("assets/images/tidy.png")
@@ -300,3 +306,5 @@ What are the variables?
 <iframe src="https://giphy.com/embed/Of40xPqggQrde" width="780" height="550" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 :::
 :::
+
+##  {background-color="black" background-image="https://media1.giphy.com/media/92cu6TfCZDVRBkmmDu/giphy.gif?cid=ecf05e47fx13mfnwlup7i5nr1amq03uocrl768itcnx81qf7&ep=v1_gifs_related&rid=giphy.gif&ct=g" background-size="200px" background-repeat="repeat"}
