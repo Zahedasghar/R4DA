@@ -7,17 +7,18 @@
 <link href="outline_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="outline_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="outline_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="outline_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.299">
-
-  <meta name="author" content="Zahid Asghar">
-  <title>Quantitative Methods for Social Sciences and Humanities</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="outline_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="outline_files/libs/revealjs/dist/reveal.css">
-  <style>
+<link href="outline_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.299">
+<meta name="author" content="Zahid Asghar">
+<meta name="dcterms.date" content="2023-11-10">
+<title>Data Analytics Workshop with R &amp; STATA</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="outline_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="outline_files/libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,16 +30,78 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="outline_files/libs/revealjs/dist/theme/quarto.css" id="theme">
-  <link rel="stylesheet" href="custom.scss">
-  <link href="outline_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="outline_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="outline_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="outline_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="outline_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="outline_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="outline_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+<link href="outline_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="outline_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="outline_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="outline_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -235,7 +298,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -322,13 +385,17 @@
       margin-right: 0; 
     }
   </style>
+<script src="outline_files/libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="outline_files/libs/jquery-1.12.4/jquery.min.js"></script><link href="outline_files/libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="outline_files/libs/leaflet-1.3.1/leaflet.js"></script><link href="outline_files/libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="outline_files/libs/proj4-2.6.2/proj4.min.js"></script><script src="outline_files/libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="outline_files/libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="outline_files/libs/leaflet-binding-2.1.2/leaflet.js"></script>
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="lahore.jpg" data-background-opacity="30%" data-background-size="contain" class="quarto-title-block center">
-  <h1 class="title">Quantitative Methods for Social Sciences and Humanities</h1>
+<section id="title-slide" data-background-color="#447099" class="quarto-title-block center"><h1 class="title">Data Analytics Workshop with R &amp; STATA</h1>
+  <p class="subtitle">Organized by PERI and UNINCEF</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -338,75 +405,184 @@ Zahid Asghar
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
-</section>
-<section id="basics-of-quantitative-investigationresearch-design" class="slide level2">
-<h2>Basics of quantitative investigation,Research Design</h2>
+  <p class="date">2023-11-10</p>
+</section><section id="about-trainer" class="slide level2"><h2>About Trainer</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="zahid.jpeg" width="600"></p>
+<p></p><figcaption>Prof.Dr. Zahid Asghar</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<div>
 <ul>
-<li><p>Simply focussing statistics and techniques: Miss the forest for the trees</p></li>
-<li><p>Introduction to Data and exploring it with R</p></li>
-<li><p>thinking clearly with data is very important ,once thinking is focused, techniques will follow</p></li>
-<li><p>Learning R for making sense of data: real data based case studies</p></li>
-<li><p>Education, Election, UN Voting data, Punjab Tax data (Messy vs tidy), WHO, Gapminder, nycflights,bikes,cia_factbook, wvs or if someone from you would like to share it.</p></li>
+<li>Student of:
+<ul>
+<li>Applied Econometrics</li>
+<li>Data Analytics</li>
+<li>Development Economics</li>
+<li>R, STATA, Excel</li>
+<li>Urban Economics</li>
+<li>Skills for jobs of today and tomorrow</li>
 </ul>
-</section>
-<section id="correlation-doesnt-imply-causation" class="slide level2">
-<h2>Correlation doesn’t imply causation</h2>
+</li>
+<li>Research interests : data for policy, development economics , Applied Econometrics</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section id="course-overview" class="slide level2"><h2>Course Overview</h2>
+<p>This worksho is designed to introduce <span class="yellow">practitioners to focus on research design and data analytics</span>, <span class="yellow">thinking clearly with data</span> and learn to analyze data apply techniques through learning by doing . Philosophy of the workshop will be to enable participants doing exploratory data analytics by mastering concepts through computer assisted tools. <span class="yellow">Main software for the course will be R</span>. During these three days we will</p>
+<ul>
+<li><p>Emphasis on learning how to deal with data issues using R.</p></li>
+<li><p>Working as a learning community to improve data analytics skills necessary in analyzing data.</p></li>
+</ul></section><section id="books-for-follow-up" class="slide level2"><h2>Books for follow up</h2>
+<ul>
+<li><p><a href="https://r4ds.had.co.nz/">R for Data Science</a></p></li>
+<li><p><a href="https://press.princeton.edu/books/hardcover/9780691214368/thinking-clearly-with-data">Thinking Clearly with Data</a></p></li>
+<li><p><a href="theeffectbook.net">The Effect</a></p></li>
+</ul></section><section id="section" class="slide level2"><h2></h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="the_effect.jpg"></p>
+<p></p><figcaption><a href="https://theeffectbook.net/">The Effect: An Introduction to Research Design and Causality</a></figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="thinking_with_data.jpg"></p>
+<p></p><figcaption><a href="https://press.princeton.edu/books/hardcover/9780691214368/thinking-clearly-with-data">Thinking Clearly with Data</a></figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="r4ds.png"></p>
+<p></p><figcaption><a href="https://r4ds.had.co.nz/">R for Data Science</a></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="workshop-objectives" class="slide level2"><h2>Workshop Objectives</h2>
+<p>All efforts will be made to learn through hands-on practice using real-world data and problems in a wide range of fields <span class="yellow">economics, business analytics, psychology, sociology, education, and public health</span>. How to write <span class="yellow">beautiful documents/reports and awesome presentations in R</span> using <span class="yellow">Quarto</span> will also be introduced which will increase participants productivity manifold.</p>
+</section><section id="this-workshop-is-about" class="slide level2"><h2>This workshop is about</h2>
+<ul>
+<li><p>This course is learning about learning statistical tools with labs, slides, video lectures.</p></li>
+<li><p>This course is about critical reasoning with data and discussion about evidence based decisioin making.</p></li>
+<li><p>Differentiating : opinion, anecdotes and hard core evidence</p></li>
+<li><p>All slides, codes, notes, data and all related data sets will be provided to all the participants.</p></li>
+<li><p>Learning how to create beautiful presentations, documents and writing research papers using R.</p></li>
+</ul>
 <blockquote>
-<p>Most politicians facing scandals win reelection</p>
+<pre><code>One can't learn all everything in 3 days time but objective is enabling beginners to move on data analytics learning path while taking professionals to next ladder from their current level of knowledge.</code></pre>
 </blockquote>
-<blockquote>
-<p>Shallow men believe in luck, believe in circumstances. Strong men believe in cause and effect.] Ralph Waldo Emerson, The Conduct of Life</p>
-</blockquote>
-</section>
-<section>
-<section id="learning-rstudiposit-and-quarto" class="title-slide slide level1 center">
-<h1>Learning RStudi/Posit and Quarto</h1>
+</section><section id="data-science" class="slide level2"><h2>Data Science</h2>
+<ul>
+<li><p><span class="hi">You go into data analysis with the tools you know, not the tools you need</span></p></li>
+<li>
+<p>These 3 days are all about giving you the tools you need</p>
+<ul>
+<li>Admittedly, a bit before you know what you need them <em>for</em>
+</li>
+</ul>
+</li>
+<li><p>We will extend them as we learn specific models</p></li>
+</ul></section><section id="r" class="slide level2"><h2>R</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p><strong>Free</strong> and <strong>open source</strong></p></li>
+<li>
+<p>A very large community</p>
+<ul>
+<li>Written by statisticians for statistics</li>
+<li>Most packages are written for <code>R</code> first</li>
+</ul>
+</li>
+<li><p>Can handle virtually any data format</p></li>
+<li><p>Makes replication easy</p></li>
+<li><p>Can integrate into documents (with <code>Quarto</code>)</p></li>
+<li><p>R is a <em>language</em> so it can do <em>everything</em> :-)</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="R.jpeg" class="center"></p>
+</div>
+</div>
+</section><section id="excel-or-stata-cant-do-this" class="slide level2"><h2>Excel (or Stata) Can’t Do This</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-1-1">Code</a></li>
+<li><a href="#tabset-1-2">Output</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, </span>
+<span id="cb2-4"><a href="#cb2-4"></a>       <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>           <span class="at">y =</span> lifeExp,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>           <span class="at">color =</span> continent))<span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="fu">scale_x_log10</span>(<span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">1000</span>,<span class="dv">10000</span>, <span class="dv">100000</span>),</span>
+<span id="cb2-10"><a href="#cb2-10"></a>                  <span class="at">label=</span>scales<span class="sc">::</span>dollar)<span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GDP/Capita"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12"></a>         <span class="at">y =</span> <span class="st">"Life Expectancy (Years)"</span>)<span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)<span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>  <span class="fu">guides</span>(<span class="at">color =</span> F)<span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>  <span class="fu">theme_light</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="outline_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="outline_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="or-this" class="slide level2"><h2>Or This</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby">
+<li><a data-tabby-default="" href="#tabset-2-1">Input</a></li>
+<li><a href="#tabset-2-2">Output</a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p>The average GDP per capita is <code>r dollar(mean(gapminder$gdpPercap))</code> with a standard deviation of <code>r dollar(sd(gapminder$gdpPercap))</code>.</p>
+</div>
+<div id="tabset-2-2">
+<p>The average GDP per capita is <code>r dollar(mean(gapminder$gdpPercap))</code> with a standard deviation of <code>r dollar(sd(gapminder$gdpPercap))</code>.</p>
+</div>
+</div>
+</div>
+</section><section id="or-this-1" class="slide level2"><h2>Or This</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="fl">74.3274</span>, <span class="at">lat =</span><span class="fl">31.5591</span> ,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>             <span class="at">popup =</span> <span class="st">"AVARI, Hotel, Lahore"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-213cd8f464d70dc2df07" style="width:1728px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-213cd8f464d70dc2df07">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[31.5591,74.3274,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"AVARI, Hotel, Lahore",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[31.5591,31.5591],"lng":[74.3274,74.3274]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
-</section>
-<section id="r-is-not-only-a-statistical-language-but-all-documentation-under-one-r" class="slide level2">
-<h2>R is not only a statistical language but all documentation under one R</h2>
-<h3 id="wordpdfhtml-powerpointioslidybeamerhtml-slides-cv-research-paper-book-writing-and-much-more-in-r-reproducibility">Word/pdf/html, powerpoint/ioslidy/beamer/html slides, CV, research paper, book writing and much more in R, Reproducibility</h3>
-<h3 id="exploratory-data-analysis-to-make-sense-of-data">Exploratory Data Analysis to make sense of data</h3>
-<h3 id="basics-of-data-visualization-under-ggplot2">Basics of data visualization under ggplot2</h3>
-<h3 id="r-and-ggplot2-nyt-bbc-google-amazon-fb">R and ggplot2 : NYT, BBC, Google, Amazon, FB ,…</h3>
-<h3 id="statistical-modeling-linear-regression-modeling-simple-and-multiple">Statistical modeling : Linear Regression modeling (Simple and Multiple)</h3>
-</section>
-<section class="slide level2">
-
-
-<img data-src="openintro.jpg" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="the_effect.jpg" class="r-stretch"></section></section>
-<section id="quantitative-methods-are-not-something-to-learn-about-but-to-do-about" class="title-slide slide level1 center">
-<h1>Quantitative Methods are not something to learn about but to do about</h1>
-<div class="footer footer-default">
-
+<img src="images/unicef.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><a href="https://peri.punjab.gov.pk/">PERI</a></p>
 </div>
 </section>
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="outline_files/libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="outline_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="outline_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="outline_files/libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="outline_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="outline_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="outline_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="outline_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="outline_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="outline_files/libs/revealjs/plugin/multiplex/socket.io.js"></script><script src="outline_files/libs/revealjs/plugin/multiplex/multiplex.js"></script><script src="outline_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="outline_files/libs/revealjs/plugin/notes/notes.js"></script><script src="outline_files/libs/revealjs/plugin/search/search.js"></script><script src="outline_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="outline_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -418,8 +594,8 @@ Zahid Asghar
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"secret":null,"id":"6e9f37c0ece626af","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -440,7 +616,7 @@ Zahid Asghar
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -565,9 +741,9 @@ Zahid Asghar
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1600,
 
-        height: 700,
+        height: 900,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -590,16 +766,50 @@ Zahid Asghar
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          RevealNotes,
+          
           RevealSearch,
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -745,6 +955,6 @@ Zahid Asghar
       }
     });
     </script>
-    
+
 
 </body></html>

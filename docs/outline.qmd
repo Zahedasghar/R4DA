@@ -1,78 +1,211 @@
 ---
-title: "Quantitative Methods for Social Sciences and Humanities"
-subtitle: ""
+title: "Data Analytics Workshop with R & STATA"
+subtitle: "Organized by PERI and UNINCEF"
 author: "Zahid Asghar"
-institute: ""
-date: "`r format(Sys.time(), '%d %B %Y')`"
-format:
+date: today
+format: 
   revealjs:
-    css: [custom.scss]
-    docs: true
-    chalkboard: true
-    keep-md: false
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    logo: "images/unicef.jpg"
+    footer: "[PERI](https://peri.punjab.gov.pk/)"
+    theme: ["simple", "custom.scss"]
+    echo: true
+    multiplex: true
+    code-link: true
     title-slide-attributes:
-      data-background-image: lahore.jpg
-      data-background-size: contain
-      data-background-opacity: 30%
-execute: 
+      data-background-color: "#447099"
+execute:
   freeze: auto
-
-editor: visual
+editor: source
 ---
 
-## Basics of quantitative investigation,Research Design 
+```{r include=FALSE}
+library(tidyverse)
+library(httr)
+clrs <- MetBrewer::met.brewer(name = "Java")
+clrs_lt <- colorspace::lighten(clrs, 0.9)
+knitr::opts_chunk$set(fig.retina = 3, collapse = TRUE)
+options(digits = 3, width = 75)
+```
 
--   Simply focussing statistics and techniques:  Miss the forest for the trees 
+## About Trainer
 
+::: columns
+::: {.column width="30%"}
+![Prof.Dr. Zahid Asghar](zahid.jpeg){width="600"}
+:::
 
--   Introduction to Data and exploring it with R
+::: {.column width="70%"}
+::: nonincremental
+-   Student of:
+    -   Applied Econometrics
+    -   Data Analytics
+    -   Development Economics
+    -   R, STATA, Excel
+    -   Urban Economics
+    -   Skills for jobs of today and tomorrow
+-   Research interests : data for policy, development economics , Applied Econometrics
+:::
+:::
+:::
 
+## Course Overview
 
--   thinking clearly with data is very important ,once thinking is focused, techniques will follow 
+This worksho is designed to introduce [practitioners to focus on research design and data analytics]{.yellow}, [thinking clearly with data]{.yellow} and learn to analyze data apply techniques through learning by doing . Philosophy of the workshop will be to enable participants doing exploratory data analytics by mastering concepts through computer assisted tools. [Main software for the course will be R]{.yellow}. During these three days we will
 
+-   Emphasis on learning how to deal with data issues using R.
 
--   Learning R for making sense of data: real data based case studies
+-   Working as a learning community to improve data analytics skills necessary in analyzing data.
 
+## Books for follow up
 
--   Education, Election, UN Voting data, Punjab Tax data (Messy vs tidy), WHO, Gapminder, nycflights,bikes,cia_factbook, wvs or if someone from you would like to share it.
+-   [R for Data Science](https://r4ds.had.co.nz/)
 
-## Correlation doesn't imply causation
+-   [Thinking Clearly with Data](https://press.princeton.edu/books/hardcover/9780691214368/thinking-clearly-with-data)
 
+-   [The Effect](theeffectbook.net)
 
+## 
 
-> Most politicians facing scandals win reelection
+::: columns
+::: {.column width="33%"}
+![[The Effect: An Introduction to Research Design and Causality](https://theeffectbook.net/)](the_effect.jpg)
+:::
 
+::: {.column width="33%"}
+![[Thinking Clearly with Data](https://press.princeton.edu/books/hardcover/9780691214368/thinking-clearly-with-data)](thinking_with_data.jpg)
+:::
 
+::: {.column width="33%"}
+![[R for Data Science](https://r4ds.had.co.nz/)](r4ds.png)
+:::
+:::
 
-> Shallow men believe in luck, believe in circumstances. Strong men believe in cause and effect.] Ralph Waldo Emerson, The Conduct of Life
+## Workshop Objectives
 
-# Learning RStudi/Posit and Quarto
+All efforts will be made to learn through hands-on practice using real-world data and problems in a wide range of fields [economics, business analytics, psychology, sociology, education, and public health]{.yellow}. How to write [beautiful documents/reports and awesome presentations in R]{.yellow} using [Quarto]{.yellow} will also be introduced which will increase participants productivity manifold.
 
+## This workshop is about
 
-## R is not only a statistical language but all documentation under one R
+-   This course is learning about learning statistical tools with labs, slides, video lectures.
 
+-   This course is about critical reasoning with data and discussion about evidence based decisioin making.
 
-### Word/pdf/html, powerpoint/ioslidy/beamer/html slides, CV, research paper, book writing and much more in R, Reproducibility
+-   Differentiating : opinion, anecdotes and hard core evidence
 
+-   All slides, codes, notes, data and all related data sets will be provided to all the participants.
 
-### Exploratory Data Analysis to make sense of data
+-   Learning how to create beautiful presentations, documents and writing research papers using R.
 
+> ```         
+> One can't learn all everything in 3 days time but objective is enabling beginners to move on data analytics learning path while taking professionals to next ladder from their current level of knowledge.
+> ```
 
-### Basics of data visualization under ggplot2 
+## Data Science
 
+-   [You go into data analysis with the tools you know, not the tools you need]{.hi}
 
-### R and ggplot2 : NYT, BBC, Google, Amazon, FB ,...
+-   These 3 days are all about giving you the tools you need
 
-### Statistical modeling : Linear Regression modeling (Simple and Multiple)
+    -   Admittedly, a bit before you know what you need them *for*
 
+-   We will extend them as we learn specific models
 
-- - -
+## R
 
-![](openintro.jpg)
+::: columns
+::: {.column width="50%"}
+-   **Free** and **open source**
 
-- - -
-![](the_effect.jpg)
+-   A very large community
 
-# Quantitative Methods are not something to learn about but to do about
+    -   Written by statisticians for statistics
+    -   Most packages are written for `R` first
 
+-   Can handle virtually any data format
 
+-   Makes replication easy
+
+-   Can integrate into documents (with `Quarto`)
+
+-   R is a *language* so it can do *everything* :-)
+
+:::
+
+::: {.column width="50%"}
+![](R.jpeg){.center}
+:::
+:::
+
+## Excel (or Stata) Can't Do This
+
+::: panel-tabset
+## Code
+
+```{r}
+#| echo: true
+library(tidyverse)
+library(gapminder)
+ggplot(data = gapminder, 
+       aes(x = gdpPercap,
+           y = lifeExp,
+           color = continent))+
+  geom_point(alpha=0.3)+
+  geom_smooth(method = "lm")+
+	scale_x_log10(breaks=c(1000,10000, 100000),
+	              label=scales::dollar)+
+	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)")+
+  facet_wrap(~continent)+
+  guides(color = F)+
+  theme_light()
+```
+
+## Output
+
+```{r}
+#| echo: false
+#| eval: true
+ggplot(data = gapminder, 
+       aes(x = gdpPercap,
+           y = lifeExp,
+           color = continent))+
+  geom_point(alpha=0.3)+
+  geom_smooth(method = "lm")+
+	scale_x_log10(breaks=c(1000,10000, 100000),
+	              label=scales::dollar)+
+	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)")+
+  facet_wrap(~continent)+
+  guides(color = F)+
+  theme_light()
+```
+:::
+
+## Or This
+
+::: panel-tabset 
+
+### Input
+The average GDP per capita is ` r dollar(mean(gapminder$gdpPercap)) ` with a standard deviation of ` r dollar(sd(gapminder$gdpPercap)) `.
+
+### Output
+
+The average GDP per capita is ` r dollar(mean(gapminder$gdpPercap)) ` with a standard deviation of ` r dollar(sd(gapminder$gdpPercap)) `.
+:::
+
+## Or This
+
+```{r}
+#| echo: true
+#| fig-width: 18
+#| fig-align: center
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = 74.3274, lat =31.5591 ,
+             popup = "AVARI, Hotel, Lahore")
+```
