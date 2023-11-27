@@ -1,0 +1,21 @@
+---
+title: "[ Quarto in R/Python]{.flow}"
+subtitle: "[Produce awesome documents]{style=color:red;}"
+author: "[ZAHID ASGHAR, School of Economics, QAU]{.adage}"
+
+format:
+  revealjs:
+    logo: "images/pide_logo.png"
+    css: [stat20.css, slides.scss, styles.scss]
+    docs: true
+    chalkboard: true
+    keep-md: false
+    title-slide-attributes:
+      data-background-image: images/pide.jpg
+      data-background-size: cover
+      data-background-opacity: 40%
+execute: 
+  freeze: auto
+
+editor: visual
+---

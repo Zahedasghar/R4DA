@@ -35,7 +35,7 @@ options(digits = 3, width = 75)
 
 ::: columns
 ::: {.column width="30%"}
-![Prof.Dr. Zahid Asghar](zahid.jpeg){width="600"}
+![Prof.Dr. Zahid Asghar, School of Economics, QAU, Islamabad](zahid.jpeg){width="600"}
 :::
 
 ::: {.column width="70%"}
@@ -90,9 +90,9 @@ All efforts will be made to learn through hands-on practice using real-world dat
 
 ## This workshop is about
 
--   This course is learning about learning statistical tools with labs, slides, video lectures.
+-   learning data analytics and modeling tools with labs and hands on practice.
 
--   This course is about critical reasoning with data and discussion about evidence based decisioin making.
+-   critical reasoning with data and discussion about evidence based decisioin making.
 
 -   Differentiating : opinion, anecdotes and hard core evidence
 
@@ -139,6 +139,16 @@ All efforts will be made to learn through hands-on practice using real-world dat
 ![](R.jpeg){.center}
 :::
 :::
+```{r}
+#| include: false
+#| label: setup
+library(tidyverse)
+library(gapminder)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(scales)
+```
 
 ## Excel (or Stata) Can't Do This
 
@@ -147,6 +157,7 @@ All efforts will be made to learn through hands-on practice using real-world dat
 
 ```{r}
 #| echo: true
+#| eval: false
 library(tidyverse)
 library(gapminder)
 ggplot(data = gapminder, 
@@ -187,14 +198,16 @@ ggplot(data = gapminder,
 
 ## Or This
 
-::: panel-tabset 
 
+
+::: panel-tabset
 ### Input
-The average GDP per capita is ` r dollar(mean(gapminder$gdpPercap)) ` with a standard deviation of ` r dollar(sd(gapminder$gdpPercap)) `.
+
+The average GDP per capita is `` ` r dollar(mean(gapminder$gdpPercap)) ` `` with a standard deviation of `` ` r dollar(sd(gapminder$gdpPercap)) ` ``.
 
 ### Output
 
-The average GDP per capita is ` r dollar(mean(gapminder$gdpPercap)) ` with a standard deviation of ` r dollar(sd(gapminder$gdpPercap)) `.
+The average GDP per capita is `r dollar(mean(gapminder$gdpPercap))` with a standard deviation of `r dollar(sd(gapminder$gdpPercap))`.
 :::
 
 ## Or This
