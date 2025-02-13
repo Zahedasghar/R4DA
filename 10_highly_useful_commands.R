@@ -61,9 +61,12 @@ airquality |>
 
 iris |> summarise(across(where(is.numeric),max,na.rm=TRUE))
 
+iris %>%
+  summarise(across(where(is.numeric), ~max(., na.rm = TRUE)))
 
 
-## Here is a text transformation after which every character column contains text with capital letters.
+## Here is a text transformation after which every character column contains
+## text with capital letters.
 
 starwars |>glimpse()
 
@@ -103,6 +106,6 @@ starwars |> select(gender, mass) |>
 # Reflow your dplyr code
 
 # ctrl+shift+A 
-starwars |> select(gender, mass) |>  group_by(gender) |>
+  starwars |> select(gender, mass) |>  group_by(gender) |>
   slice_max(mass, n = 3, with_ties = F) |>  arrange(gender, desc(mass)) |>
   tidyr::drop_na() |>  mutate(cat = "top3") |>  as.data.frame()

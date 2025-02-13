@@ -25,7 +25,7 @@ library(tidyverse)
 
 # Good Morning!
 
-- - -
+------------------------------------------------------------------------
 
 ```{r echo = FALSE, out.width="20%"}
 knitr::include_graphics("assets/images/tidy.png")
@@ -81,7 +81,7 @@ claims made using data.
 
 **Data:**
 
- An item of (chiefly numerical) information, esp. one obtained by scientific work, a number of which are typically collected together for reference, analysis, or calculation.
+An item of (chiefly numerical) information, esp. one obtained by scientific work, a number of which are typically collected together for reference, analysis, or calculation.
 
 . . .
 
